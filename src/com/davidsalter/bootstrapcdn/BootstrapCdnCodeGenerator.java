@@ -80,7 +80,14 @@ public class BootstrapCdnCodeGenerator implements CodeGenerator {
             try {
                 Caret caret = textComp.getCaret();
                 int dot = caret.getDot();
-                textComp.getDocument().insertString(dot, "<link href=\"//netdna.bootstrapcdn.com/bootstrap/" + version + "/css/bootstrap.min.css\" rel=\"stylesheet\"></link>", null);
+                
+                if (form.isCssSelected()) {
+                    textComp.getDocument().insertString(dot, "<link href=\"//netdna.bootstrapcdn.com/bootstrap/" + version + "/css/bootstrap.min.css\" rel=\"stylesheet\">", null);
+                }
+                
+                if (form.isJsSelected()) {
+                    textComp.getDocument().insertString(dot, "<script src=\"//netdna.bootstrapcdn.com/bootstrap/" + version + "/js/bootstrap.min.js\"></script>\r\n", null);
+                }
             } catch (BadLocationException ex) {
                 Exceptions.printStackTrace(ex);
             }

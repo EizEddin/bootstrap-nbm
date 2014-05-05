@@ -29,8 +29,28 @@ public class BootstrapVersionPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * Gets the selected version of Bootstrap in the format x.x.x, e.g. 3.1.1
+     * @return The selected version.
+     */
     public String getSelectedVersion() {
         return bootstrapVersionList.getSelectedValue().toString();
+    }
+    
+    /**
+     * Flag indicating whether the Bootstrap CSS file is to be linked to or not.
+     * @return Flag - true when CSS is selected, false otherwise
+     */
+    public Boolean isCssSelected() {
+        return linkToCssCheckBox.isSelected();
+    }
+    
+    /**
+     * Flag indicating whether the Bootstrap JS file is to be linked to or not.
+     * @return Flag - true when JS is selected, false otherwise
+     */
+    public Boolean isJsSelected() {
+        return linkToJsCheckBox.isSelected();
     }
 
     /**
@@ -45,6 +65,8 @@ public class BootstrapVersionPanel extends javax.swing.JPanel {
         bootstrapVersionLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         bootstrapVersionList = new javax.swing.JList();
+        linkToJsCheckBox = new javax.swing.JCheckBox();
+        linkToCssCheckBox = new javax.swing.JCheckBox();
 
         bootstrapVersionLabel.setText(org.openide.util.NbBundle.getMessage(BootstrapVersionPanel.class, "BootstrapVersionPanel.bootstrapVersionLabel.text")); // NOI18N
 
@@ -55,6 +77,12 @@ public class BootstrapVersionPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(bootstrapVersionList);
 
+        linkToJsCheckBox.setSelected(true);
+        linkToJsCheckBox.setText(org.openide.util.NbBundle.getMessage(BootstrapVersionPanel.class, "BootstrapVersionPanel.linkToJsCheckBox.text")); // NOI18N
+
+        linkToCssCheckBox.setSelected(true);
+        linkToCssCheckBox.setText(org.openide.util.NbBundle.getMessage(BootstrapVersionPanel.class, "BootstrapVersionPanel.linkToCssCheckBox.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,6 +90,8 @@ public class BootstrapVersionPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(linkToCssCheckBox)
+                    .addComponent(linkToJsCheckBox)
                     .addComponent(bootstrapVersionLabel)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -72,7 +102,11 @@ public class BootstrapVersionPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(bootstrapVersionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(linkToCssCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(linkToJsCheckBox)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -82,5 +116,7 @@ public class BootstrapVersionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel bootstrapVersionLabel;
     private javax.swing.JList bootstrapVersionList;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBox linkToCssCheckBox;
+    private javax.swing.JCheckBox linkToJsCheckBox;
     // End of variables declaration//GEN-END:variables
 }
